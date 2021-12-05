@@ -14,7 +14,9 @@ LIBRARY_FOLDER	=	./libft
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
-SOURCE_FILES	=	ft_example.c
+SOURCE_FILES	=	utils/utils.c \
+					utils/file.c \
+					pipex.c
 
 # Header Files...
 

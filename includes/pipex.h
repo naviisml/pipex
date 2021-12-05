@@ -26,4 +26,12 @@ void	ft_close(int fd);
 void	ft_putchr_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 int		ft_write_err(char *str);
+
+typedef struct s_pipex
+{
+	int		fd_input;
+	int		fd_output;
+	char	**commands;
+}	t_pipex;
+
 #endif
