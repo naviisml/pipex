@@ -1,0 +1,4 @@
+[submodule "libft"]
+	path = libft
+	url = https://github.com/naviisml/libft.git
+	branch = v1

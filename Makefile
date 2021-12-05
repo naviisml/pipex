@@ -1,4 +1,4 @@
-NAME = program
+NAME = pipex
 
 AR = @ar
 AR_FLAGS = -rcs
@@ -6,18 +6,24 @@ AR_FLAGS = -rcs
 COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra
 
-# Configuration
+# Configuration...
+
+# Library...
+LIBRARY			=	libft.a
+LIBRARY_FOLDER	=	./libft
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
 SOURCE_FILES	=	ft_example.c
 
+# Header Files...
+
 # Object Files...
 EXTRA_FOLDERS	=	$(SOURCE_FOLDER)
-OBJECT_FOLDER	=	./objects
+OBJECT_FOLDER	=	../objects
 OBJECT_FILES	=	$(addprefix $(OBJECT_FOLDER)/, $(addprefix $(SOURCE_FOLDER)/, $(SOURCE_FILES:.c=.o)))
 
-.PHONY =  $(NAME) all clean fclean re dev
+.PHONY =  $(NAME) $(LIBRARY) all clean fclean re dev
 
 # Compile the .c files to .o files...
 $(OBJECT_FOLDER)/%.o: %.c
@@ -26,24 +32,28 @@ $(OBJECT_FOLDER)/%.o: %.c
 	@$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
 
 # Compile the program...
-$(NAME): $(OBJECT_FILES)
+$(NAME): $(LIBRARY) $(OBJECT_FILES)
 	@echo "Building \t$(NAME)... (100%)"
-	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) -o $(NAME)
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) $(LIBRARY) -o $(NAME)
 
+# Compile a library...
+$(LIBRARY):
+	@echo "Compiling \t$(LIBRARY)..."
+	@$(MAKE) bonus -C $(LIBRARY_FOLDER)
+	@mv $(addprefix $(LIBRARY_FOLDER)/, $(LIBRARY)) $(LIBRARY)
+
+# Compile the entire project
 all: $(NAME)
 
 # Remove the `object` folder and files...
 clean:
+	@$(MAKE) clean -C $(LIBRARY_FOLDER)
 	@rm -rf $(OBJECT_FILES) $(OBJECT_FOLDER)
 
 # Remove the `object` and `build` folder and files...
 fclean: clean
-	@rm -rf $(NAME)
+	@$(MAKE) fclean -C $(LIBRARY_FOLDER)
+	@rm -rf $(NAME) $(LIBRARY)
 
 # Clean the program up and re-compile it...
 re: fclean all
-
-# Re-compile the program and run the script...
-dev: re
-	@echo "Running \t$(NAME)..."
-	@./$(NAME)

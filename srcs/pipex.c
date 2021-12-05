@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_example.c                                       :+:    :+:            */
+/*   pipex.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/11/23 00:50:05 by nismail       ########   odam.nl         */
+/*   Updated: 2021/12/05 15:58:30 by navi          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_example.h"
+#include "../includes/pipex.h"
 
 int	main(void)
 {
