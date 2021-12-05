@@ -7,6 +7,7 @@ COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra
 
 # Configuration...
+TEST_COMMAND 	= 	./$(NAME) resources/input cmd1 cmd2 cmd3 cmd4 cmd5 cmd6 resources/output
 
 # Library...
 LIBRARY			=	libft.a
@@ -62,5 +63,5 @@ re: fclean all
 
 # Run a test
 test: all
-	@echo "Running \t$(NAME)..."
-	@./$(NAME) resources/input cmd1 cmd2 cmd3 cmd4 cmd5 cmd6 resources/output
+	@echo "Running \t[$(TEST_COMMAND)]..."
+	@$(TEST_COMMAND)
