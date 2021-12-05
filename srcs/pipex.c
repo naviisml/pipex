@@ -6,14 +6,18 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/05 21:07:37 by navi          ########   odam.nl         */
+/*   Updated: 2021/12/05 21:15:31 by navi          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
 /*
- * The pipe_setup() function ...
+ * The pipe_setup() function gets the first and last argument from argv,
+ * and checks if the files exist.
+ * 
+ * After this, we loop through the rest of the arguments passed in the
+ * program, and put them one-by-one in a list.
  */
 static int	pipe_setup(t_pipex *pipe, char **argv, int argc)
 {
@@ -24,9 +28,12 @@ static int	pipe_setup(t_pipex *pipe, char **argv, int argc)
 	if (pipe->fd_input < 0 || pipe->fd_output < 0)
 		return (ft_write_err("Err: File doesn't exist."));
 	i = 2;
+	pipe->commands = malloc((argc - 1) * sizeof(char *));
+	if (!pipe->commands)
+		return (0);
 	while (i < argc)
 	{
-		printf("Arg: %s \n", argv[i]);
+		pipe->commands[i - 2] = argv[i];
 		i++;
 	}
 	return (1);

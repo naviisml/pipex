@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/05 20:54:55 by navi          ########   odam.nl         */
+/*   Updated: 2021/12/05 21:13:27 by navi          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // REMOVE THIS LINE!!
 # include <stdio.h>
 
+# include <stdlib.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include <fcntl.h>
