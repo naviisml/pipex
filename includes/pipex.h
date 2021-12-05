@@ -23,4 +23,7 @@
 int		ft_open(char *file);
 void	ft_close(int fd);
 
+void	ft_putchr_fd(char c, int fd);
+void	ft_putstr_fd(char *str, int fd);
+int		ft_write_err(char *str);
 #endif
