@@ -57,3 +57,8 @@ fclean: clean
 
 # Clean the program up and re-compile it...
 re: fclean all
+
+# Run a test
+test: all
+	@echo "Running \t$(NAME)..."
+	@./$(NAME) resources/input cmd1 cmd2 cmd3 cmd4 cmd5 cmd6 resources/output
