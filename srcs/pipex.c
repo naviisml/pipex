@@ -39,6 +39,17 @@ static int	pipe_setup(t_pipex *pipe, char **argv, int argc)
 	return (1);
 }
 
+ * The pipe_close() function closes the files and free's the allocated
+ * memory.
+ */
+static void	pipe_close(t_pipex *pipe)
+{
+	ft_file_close(pipe->fd_input);
+	ft_file_close(pipe->fd_output);
+	free(pipe->cmds);
+	pipe->cmdc = 0;
+}
+
 /*
  * The pipex program ...
  */
@@ -48,9 +59,10 @@ int	main(int argc, char **args)
 	int		res;
 
 	if (argc < 5)
-		return (ft_write_err("Err: Mising args"));
-	res = pipe_setup(&pipe, args, (argc - 1));
+		return (ft_write_err("Err: Missing arguments"));
+	res = pipe_initialize(&pipe, args, (argc - 1));
 	if (!res)
 		return (0);
+	pipe_close(&pipe);
 	return (0);
 }
