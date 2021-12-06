@@ -13,29 +13,38 @@
 #include "../includes/pipex.h"
 
 /*
- * The pipe_setup() function gets the first and last argument from argv,
- * and checks if the files exist.
+ * The pipe_initialize() function checks if the first argument is
+ * a valid file, after this, we check if the output file exists,
+ * and create a new file if the file doesn't exist.
  * 
- * After this, we loop through the rest of the arguments passed in the
- * program, and put them one-by-one in a list.
+ * After this, we loop through the argument list (except for the
+ * first and last argument) and put these in a array in the t_pipex
+ * struct.
  */
-static int	pipe_setup(t_pipex *pipe, char **argv, int argc)
+static int	pipe_initialize(t_pipex *pipe, char **argv, int argc)
 {
 	int		i;
 
-	if (pipe->fd_input < 0 || pipe->fd_output < 0)
 	pipe->fd_input = ft_file_open(argv[1]);
 	pipe->fd_output = ft_file_open(argv[argc]);
+	if (pipe->fd_input < 0)
 		return (ft_write_err("Err: File doesn't exist."));
+	if (pipe->fd_output < 0)
+	{
+		pipe->fd_output = ft_file_create(argv[argc]);
+		if (pipe->fd_output < 0)
+			return (ft_write_err("Err: Could't create output file."));
+	}
 	i = 2;
-	pipe->commands = malloc((argc - 1) * sizeof(char *));
-	if (!pipe->commands)
+	pipe->cmds = malloc((argc - 1) * sizeof(char *));
+	if (!pipe->cmds)
 		return (0);
 	while (i < argc)
 	{
-		pipe->commands[i - 2] = argv[i];
+		pipe->cmds[i - 2] = argv[i];
 		i++;
 	}
+	pipe->cmdc = (i - 2);
 	return (1);
 }
 
