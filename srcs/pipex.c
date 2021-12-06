@@ -23,9 +23,9 @@ static int	pipe_setup(t_pipex *pipe, char **argv, int argc)
 {
 	int		i;
 
-	pipe->fd_input = ft_open(argv[1]);
-	pipe->fd_output = ft_open(argv[argc]);
 	if (pipe->fd_input < 0 || pipe->fd_output < 0)
+	pipe->fd_input = ft_file_open(argv[1]);
+	pipe->fd_output = ft_file_open(argv[argc]);
 		return (ft_write_err("Err: File doesn't exist."));
 	i = 2;
 	pipe->commands = malloc((argc - 1) * sizeof(char *));

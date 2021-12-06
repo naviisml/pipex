@@ -21,8 +21,9 @@
 # include <sys/types.h>
 # include <fcntl.h>
 
-int		ft_open(char *file);
-void	ft_close(int fd);
+int		ft_file_open(char *file);
+int		ft_file_create(char *file);
+void	ft_file_close(int fd);
 
 void	ft_putchr_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
