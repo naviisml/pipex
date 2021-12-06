@@ -15,7 +15,8 @@ LIBRARY_FOLDER	=	./libft
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
-SOURCE_FILES	=	utils/utils.c \
+SOURCE_FILES	=	utils/debug.c \
+					utils/utils.c \
 					utils/file.c \
 					pipex.c
 

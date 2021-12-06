@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/06 01:42:40 by navi          ########   odam.nl         */
+/*   Updated: 2021/12/06 17:14:33 by navi          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,6 @@ static int	pipe_initialize(t_pipex *pipe, char **argv, int argc)
 }
 
 /*
- * The pipe_open() function ...
- */
-static void	pipe_open(t_pipex *pipe)
-{
-	int	i;
-
-	printf("Input: %d \n", pipe->fd_input);
-	printf("Output: %d \n", pipe->fd_output);
-	i = 0;
-	while (i < pipe->cmdc)
-	{
-		printf("Command %d: %s \n", (i + 1), pipe->cmds[i]);
-		i++;
-	}
-}
-
-/*
  * The pipe_close() function closes the files and free's the allocated
  * memory.
  */
@@ -90,7 +73,7 @@ int	main(int argc, char **args)
 	res = pipe_initialize(&pipe, args, (argc - 1));
 	if (!res)
 		return (0);
-	pipe_open(&pipe);
+	debug_pipex_struct(&pipe);
 	pipe_close(&pipe);
 	return (0);
 }
