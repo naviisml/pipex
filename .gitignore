@@ -6,3 +6,4 @@ tester/
 
 # Files
 *.DS_Store
+resources/output
