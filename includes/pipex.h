@@ -13,10 +13,6 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# ifndef DEBUG
-#  define DEBUG	1
-# endif
-
 // REMOVE THIS LINE!!
 # include <stdio.h>
 
