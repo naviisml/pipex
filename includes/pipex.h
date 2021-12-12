@@ -6,15 +6,12 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/12 17:40:34 by nismail       ########   odam.nl         */
+/*   Updated: 2021/12/12 17:44:47 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
-
-// REMOVE THIS LINE!!
-# include <stdio.h>
 
 // System Libraries...
 # include <sys/types.h>
@@ -41,7 +38,5 @@ void	ft_file_close(int fd);
 void	ft_putchr_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 int		ft_write_err(char *str);
-
-void	debug_pipex_struct(t_pipex *pipe);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/12 17:42:37 by nismail       ########   odam.nl         */
+/*   Updated: 2021/12/12 17:46:01 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	process_start(char *cmd)
 	pid = fork();
 	if (pid == 0)
 	{
-		printf("Executing [%s], pid=%d\n", cmd, pid);
+		// Redirect stdout to file, execute the command, catch result and reset the fd
 		exit(pid);
 	}
 	while (wait(NULL) != -1 || errno != ECHILD);
@@ -107,7 +107,6 @@ int	main(int argc, char **args)
 	res = pipe_initialize(&pipe, args, (argc - 1));
 	if (!res)
 		return (0);
-	debug_pipex_struct(&pipe);
 	pipe_run(&pipe);
 	pipe_close(&pipe);
 	return (0);
