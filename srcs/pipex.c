@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/06 17:14:33 by navi          ########   odam.nl         */
+/*   Updated: 2021/12/12 17:42:37 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,40 @@ static int	pipe_initialize(t_pipex *pipe, char **argv, int argc)
 }
 
 /*
+ * The process_start() function executes the command determined by
+ * char *cmd, then catches and returns the stdout of that command.
+ */
+static int	process_start(char *cmd)
+{
+	int	pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		printf("Executing [%s], pid=%d\n", cmd, pid);
+		exit(pid);
+	}
+	while (wait(NULL) != -1 || errno != ECHILD);
+	return (1);
+}
+
+/*
+ * The pipe_run() function loops over the commands one by
+ * one, and creates a new process for every command.
+ */
+static void	pipe_run(t_pipex *pipe)
+{
+	int	i;
+	
+	i = 0;
+	while (i < pipe->cmdc)
+	{
+		process_start(pipe->cmds[i]);
+		i++;
+	}
+}
+
+/*
  * The pipe_close() function closes the files and free's the allocated
  * memory.
  */
@@ -74,6 +108,7 @@ int	main(int argc, char **args)
 	if (!res)
 		return (0);
 	debug_pipex_struct(&pipe);
+	pipe_run(&pipe);
 	pipe_close(&pipe);
 	return (0);
 }
