@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/06 01:42:40 by navi          ########   odam.nl         */
+/*   Updated: 2021/12/12 17:46:01 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,35 @@ static int	pipe_initialize(t_pipex *pipe, char **argv, int argc)
 }
 
 /*
- * The pipe_open() function ...
+ * The process_start() function executes the command determined by
+ * char *cmd, then catches and returns the stdout of that command.
  */
-static void	pipe_open(t_pipex *pipe)
+static int	process_start(char *cmd)
+{
+	int	pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		// Redirect stdout to file, execute the command, catch result and reset the fd
+		exit(pid);
+	}
+	while (wait(NULL) != -1 || errno != ECHILD);
+	return (1);
+}
+
+/*
+ * The pipe_run() function loops over the commands one by
+ * one, and creates a new process for every command.
+ */
+static void	pipe_run(t_pipex *pipe)
 {
 	int	i;
-
-	printf("Input: %d \n", pipe->fd_input);
-	printf("Output: %d \n", pipe->fd_output);
+	
 	i = 0;
 	while (i < pipe->cmdc)
 	{
-		printf("Command %d: %s \n", (i + 1), pipe->cmds[i]);
+		process_start(pipe->cmds[i]);
 		i++;
 	}
 }
@@ -90,7 +107,7 @@ int	main(int argc, char **args)
 	res = pipe_initialize(&pipe, args, (argc - 1));
 	if (!res)
 		return (0);
-	pipe_open(&pipe);
+	pipe_run(&pipe);
 	pipe_close(&pipe);
 	return (0);
 }
