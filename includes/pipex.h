@@ -28,7 +28,7 @@ typedef struct s_pipex	t_pipex;
 int		pipe_initialize(t_pipex *pipe, char **argv, int argc, char **env);
 void	pipe_run(t_pipex *pipe);
 void	pipe_close(t_pipex *pipe);
-int		process_start(char *cmd, char **env);
+int		process_start(t_pipex *pipe, int id);
 int		ft_file_open(char *file);
 int		ft_file_create(char *file);
 void	ft_file_close(int fd);
