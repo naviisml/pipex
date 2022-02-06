@@ -7,7 +7,8 @@ COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra -Iincludes/
 
 # Configuration...
-TEST_COMMAND 	= 	./$(NAME) resources/input "ls -l" cmd2 cmd3 cmd4 cmd5 cmd6 resources/output
+TEST_COMMAND 	= 	./$(NAME) ./resources/input "ls ." wc ./resources/output \
+					< ./resources/input ls . | wc > ./resources/output_origin
 
 # Libft...
 LIBFT			=	libft.a
@@ -73,5 +74,5 @@ re: fclean all
 
 # Run a test
 dev: all
-	@echo "Running \t[$(TEST_COMMAND)]..."
+	@echo "Running \t[]..."
 	@$(TEST_COMMAND)
