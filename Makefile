@@ -52,6 +52,11 @@ $(LIBFT):
 	@mkdir -p $(BUILD_FOLDER)
 	@mv $(addprefix $(LIBFT_FOLDER)/, $(LIBFT)) $(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
+# Compile the bonus
+bonus: $(NAME)
+	@echo "Building \t$(NAME) Bonus... (100%)"
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) $(BUILD_FILES) -o $(NAME)
+
 # Compile the entire project
 all: $(NAME)
 

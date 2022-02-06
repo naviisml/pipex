@@ -33,6 +33,8 @@ int	main(int argc, char **args, char **env)
 	t_pipex	pipe;
 	int		res;
 
+	if (BONUS == 0 && argc != 5)
+		return (ft_write_err("Err: Too many arguments"));
 	if (argc < 5)
 		return (ft_write_err("Err: Missing arguments"));
 	res = pipe_initialize(&pipe, args, (argc - 1), env);

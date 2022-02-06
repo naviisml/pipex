@@ -13,6 +13,11 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
+// Bonus State (On/Off)
+# ifndef BONUS
+#  define BONUS 1
+# endif
+
 // System Libraries...
 # include <libft.h>
 # include <sys/types.h>
