@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 16:51:42 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 17:32:10 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_pipex
 {
 	int		fd_input;
 	int		fd_output;
+	char	*path;
 	char	**env;
 	char	**cmds;
 	int		cmdc;

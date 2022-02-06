@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 16:47:11 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 16:57:04 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	pipe_run(t_pipex *pipe)
 	i = 0;
 	while (i < pipe->cmdc)
 	{
-		process_start(pipe->cmds[i], pipe->env);
+		process_start(pipe, i);
 		i++;
 	}
 }
