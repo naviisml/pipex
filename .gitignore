@@ -1,10 +1,10 @@
 # Folders
 .vscode/
+resources/
 objects/
 build/
 tester/
 
 # Files
 *.DS_Store
-resources/output
 pipex
