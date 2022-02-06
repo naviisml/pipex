@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 // System Libraries...
+# include <libft.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <errno.h>
