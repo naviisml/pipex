@@ -21,6 +21,8 @@ BUILD_FILES		=	$(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 SOURCE_FOLDER	=	./srcs
 SOURCE_FILES	=	utilities/utils.c \
 					utilities/file.c \
+					modules/process.c \
+					modules/pipe.c \
 					pipex.c
 
 # Header Files...
