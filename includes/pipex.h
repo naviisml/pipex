@@ -19,16 +19,19 @@
 # include <sys/wait.h>
 # include <errno.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 
 typedef struct s_pipex	t_pipex;
 
-// Function Prototypes...
+int		pipe_initialize(t_pipex *pipe, char **argv, int argc, char **env);
+void	pipe_run(t_pipex *pipe);
+void	pipe_run(t_pipex *pipe);
+int		process_start(char *cmd, char **env);
 int		ft_file_open(char *file);
 int		ft_file_create(char *file);
 void	ft_file_close(int fd);
-
 void	ft_putchr_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 int		ft_write_err(char *str);
