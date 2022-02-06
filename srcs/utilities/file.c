@@ -32,7 +32,7 @@ int	ft_file_create(char *file)
 {
 	int	fd;
 
-	fd = open(file, O_CREAT, 0644);
+	fd = open(file, O_CREAT | O_TRUNC, 0777);
 	if (fd < 0)
 		return (-1);
 	return (fd);

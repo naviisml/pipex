@@ -1,3 +1,12 @@
-       0       0       0 total
- en.subject.pdf  libraries       pipex           srcs
-Makefile        build           includes        objects         resources
+build
+en.subject.pdf
+includes
+libraries
+LICENSE.md
+Makefile
+objects
+pipex
+README.md
+resources
+srcs
+0 0 0

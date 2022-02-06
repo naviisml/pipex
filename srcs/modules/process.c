@@ -23,15 +23,15 @@
  */
 static void	process_exec(t_pipex *pipe, char **args)
 {
-	int		output;
-	int		input;
 	int		err;
 	char	*cmd;
 
-	input = dup2(pipe->fd_input, STDIN_FILENO);
-	output = dup2(pipe->fd_output, STDOUT_FILENO);
+	dup2(pipe->fd_input, STDIN_FILENO);
+	dup2(pipe->fd_output, STDOUT_FILENO);
 	cmd = env_cmd(pipe, args[0]);
-	err = execve(cmd, (args + 1), pipe->env);
+	if (args[1])
+		args = args + 1;
+	err = execve(cmd, args, pipe->env);
 	if (err == -1)
 		perror(args[0]);
 }
