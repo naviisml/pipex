@@ -25,6 +25,26 @@ void	env_parse(t_pipex *pipex)
 	pipex->path = (*pipex->env + 5);
 }
 
+/*
+ * The env_parse() function loops over the pipex->path, and checks if the bin
+ * exists.
+ */
+char	*env_cmd(t_pipex *pipex, char *cmd)
+{
+	char	**paths;
+	int		i;
+	char	*bin;
+
+	paths = ft_split(pipex->path, ':');
+	i = 0;
+	while (paths[i])
+	{
+		bin = ft_strjoin(paths[i], ft_strjoin("/", cmd));
+		if (access(bin, F_OK) == 0)
+			break ;
+		i++;
+	}
+	ft_putchar_fd('\n', 2);
 	ft_putchar_fd('\n', 2);
 	ft_putstr_fd(bin, 2);
 	ft_putchar_fd('\n', 2);

@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 17:40:37 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 19:10:18 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static void	process_exec(t_pipex *pipe, char **args)
 	int		output;
 	int		input;
 	int		err;
+	char	*cmd;
 
 	input = dup2(pipe->fd_input, STDIN_FILENO);
 	output = dup2(pipe->fd_output, STDOUT_FILENO);
-	err = execve("/bin/ls", args, pipe->env);
+	cmd = env_cmd(pipe, args[0]);
+	err = execve(cmd, (args + 1), pipe->env);
 	if (err == -1)
 		perror(args[0]);
 }
