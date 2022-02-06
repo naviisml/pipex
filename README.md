@@ -6,21 +6,26 @@ Pipex is a project that aims to teach us a mechanism we already know in UNIX pro
 
 - Support dynamic amount of commands
 
+## Requirements
+
+- gcc
+- make
+
 ## Installation
 
-**Step 1: Clone this repository**
+**Step 1. Install this repository**
 
 ```
-git clone <this-repository-url>
+git clone https://github.com/naviisml/pipex
 ```
 
-**Step 2: Build the program**
+**Step 2. Compile the program**
 
 ```
 make all
 ```
 
-**Step 3: Use the program**
+## Usage
 
 ```
 ./pipex input_file cmd cmd1 ... cmdn output_file
@@ -31,3 +36,5 @@ make all
 **Score:** NaN
 
 **Date:** NaN
+
+<div align=center>Made with tons of ☕ and ❤️ by <a href="https://github.com/naviisml">Navi</a></div>
