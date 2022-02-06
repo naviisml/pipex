@@ -27,7 +27,7 @@ SOURCE_FILES	=	utilities/utils.c \
 
 # Object Files...
 EXTRA_FOLDERS	=	$(SOURCE_FOLDER)
-OBJECT_FOLDER	=	../objects
+OBJECT_FOLDER	=	./objects
 OBJECT_FILES	=	$(addprefix $(OBJECT_FOLDER)/, $(addprefix $(SOURCE_FOLDER)/, $(SOURCE_FILES:.c=.o)))
 
 .PHONY =  $(NAME) $(LIBRARY) all clean fclean re dev
