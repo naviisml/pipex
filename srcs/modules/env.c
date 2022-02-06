@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pipex.c                                            :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 19:07:14 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 19:16:38 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
 /*
- * The pipex program ...
+ * The env_parse() function loops through the program's enviourment variables
+ * and saves the `PATH` variable to t_pipex *pipex->path
  */
-int	main(int argc, char **args, char **env)
+void	env_parse(t_pipex *pipex)
 {
-	t_pipex	pipe;
-	int		res;
+	while (ft_strncmp("PATH", *pipex->env, 4))
+	{
+		pipex->env++;
+	}
+	pipex->path = (*pipex->env + 5);
+}
 
-	if (BONUS == 0 && argc != 5)
-		return (ft_write_err("Err: Too many arguments"));
-	if (argc < 5)
-		return (ft_write_err("Err: Missing arguments"));
-	res = pipe_initialize(&pipe, args, (argc - 1), env);
-	if (!res)
-		return (0);
-	env_parse(&pipe);
-	pipe_run(&pipe);
-	pipe_close(&pipe);
-	return (0);
+	ft_putchar_fd('\n', 2);
+	ft_putstr_fd(bin, 2);
+	ft_putchar_fd('\n', 2);
+	ft_putchar_fd('\n', 2);
+	return (bin);
 }

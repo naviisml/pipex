@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 17:32:10 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 19:07:44 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_pipex	t_pipex;
 int		pipe_initialize(t_pipex *pipe, char **argv, int argc, char **env);
 void	pipe_run(t_pipex *pipe);
 void	pipe_close(t_pipex *pipe);
+void	env_parse(t_pipex *pipex);
+char	*env_cmd(t_pipex *pipex, char *cmd);
 int		process_start(t_pipex *pipe, int id);
 int		ft_file_open(char *file);
 int		ft_file_create(char *file);
