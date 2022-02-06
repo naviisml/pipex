@@ -6,11 +6,11 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/12 17:46:01 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 14:08:01 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include <pipex.h>
 
 /*
  * The pipe_initialize() function checks if the first argument is
@@ -55,6 +55,7 @@ static int	pipe_initialize(t_pipex *pipe, char **argv, int argc)
 static int	process_start(char *cmd)
 {
 	int	pid;
+	(void)cmd;
 
 	pid = fork();
 	if (pid == 0)

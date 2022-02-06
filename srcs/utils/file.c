@@ -6,11 +6,11 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/12/06 01:41:25 by navi          ########   odam.nl         */
+/*   Updated: 2022/02/06 14:05:40 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pipex.h"
+#include <pipex.h>
 
 /*
  * The ft_file_open() function ...

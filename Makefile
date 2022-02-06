@@ -4,19 +4,22 @@ AR = @ar
 AR_FLAGS = -rcs
 
 COMPILER = @gcc
-COMPILER_FLAGS = -Wall -Werror -Wextra
+COMPILER_FLAGS = -Wall -Werror -Wextra -Iincludes/
 
 # Configuration...
 TEST_COMMAND 	= 	./$(NAME) resources/input cmd1 cmd2 cmd3 cmd4 cmd5 cmd6 resources/output
 
-# Library...
-LIBRARY			=	libft.a
-LIBRARY_FOLDER	=	./libft
+# Libft...
+LIBFT			=	libft.a
+LIBFT_FOLDER	=	./libraries/libft
+
+# Build Folder
+BUILD_FOLDER	=	./build
+BUILD_FILES		=	$(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
-SOURCE_FILES	=	utils/debug.c \
-					utils/utils.c \
+SOURCE_FILES	=	utils/utils.c \
 					utils/file.c \
 					pipex.c
 
@@ -36,33 +39,32 @@ $(OBJECT_FOLDER)/%.o: %.c
 	@$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
 
 # Compile the program...
-$(NAME): $(LIBRARY) $(OBJECT_FILES)
+$(NAME): $(LIBFT) $(OBJECT_FILES)
 	@echo "Building \t$(NAME)... (100%)"
-	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) $(LIBRARY) -o $(NAME)
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) $(BUILD_FILES) -o $(NAME)
 
-# Compile a library...
-$(LIBRARY):
-	@echo "Compiling \t$(LIBRARY)..."
-	@$(MAKE) bonus -C $(LIBRARY_FOLDER)
-	@mv $(addprefix $(LIBRARY_FOLDER)/, $(LIBRARY)) $(LIBRARY)
+# Compile Libft...
+$(LIBFT):
+	@echo "Compiling \t$(LIBFT)..."
+	@$(MAKE) all -C $(LIBFT_FOLDER)
+	@mkdir -p $(BUILD_FOLDER)
+	@mv $(addprefix $(LIBFT_FOLDER)/, $(LIBFT)) $(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
 # Compile the entire project
 all: $(NAME)
 
 # Remove the `object` folder and files...
 clean:
-	@$(MAKE) clean -C $(LIBRARY_FOLDER)
 	@rm -rf $(OBJECT_FILES) $(OBJECT_FOLDER)
 
 # Remove the `object` and `build` folder and files...
 fclean: clean
-	@$(MAKE) fclean -C $(LIBRARY_FOLDER)
-	@rm -rf $(NAME) $(LIBRARY)
+	@rm -rf $(NAME)
 
 # Clean the program up and re-compile it...
 re: fclean all
 
 # Run a test
-test: all
+dev: all
 	@echo "Running \t[$(TEST_COMMAND)]..."
 	@$(TEST_COMMAND)
