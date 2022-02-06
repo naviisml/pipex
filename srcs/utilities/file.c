@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 14:05:40 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/06 17:12:36 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_file_open(char *file)
 	fd = open(file, O_RDWR);
 	if (fd < 0)
 		return (-1);
-	return (1);
+	return (fd);
 }
 
 /*
