@@ -7,7 +7,7 @@ COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra -Iincludes/
 
 # Configuration...
-TEST_COMMAND 	= 	./$(NAME) ./resources/input ls wc ./resources/output
+TEST_COMMAND 	= 	./$(NAME) ./resources/input "ls -l" ls ./resources/output
 
 # Libft...
 LIBFT			=	libft.a

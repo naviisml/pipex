@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 16:57:04 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/07 11:27:26 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ int	pipe_initialize(t_pipex *pipe, char **argv, int argc, char **env)
  * The pipe_run() function loops over the commands one by
  * one, and creates a new process for every command.
  */
-void	pipe_run(t_pipex *pipe)
+void	pipe_run(t_pipex *pipex)
 {
 	int	i;
-	
+
 	i = 0;
-	while (i < pipe->cmdc)
+	while (i < pipex->cmdc)
 	{
-		process_start(pipe, i);
+		process_start(pipex, i);
 		i++;
 	}
 }
@@ -65,10 +65,10 @@ void	pipe_run(t_pipex *pipe)
  * The pipe_close() function closes the files and free's the allocated
  * memory.
  */
-void	pipe_close(t_pipex *pipe)
+void	pipe_close(t_pipex *pipex)
 {
-	ft_file_close(pipe->fd_input);
-	ft_file_close(pipe->fd_output);
-	free(pipe->cmds);
-	pipe->cmdc = 0;
+	ft_file_close(pipex->fd_input);
+	ft_file_close(pipex->fd_output);
+	free(pipex->cmds);
+	pipex->cmdc = 0;
 }
