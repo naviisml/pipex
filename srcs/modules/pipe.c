@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/07 11:27:26 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/07 12:42:42 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,6 @@ int	pipe_initialize(t_pipex *pipe, char **argv, int argc, char **env)
 	}
 	pipe->cmdc = (i - 2);
 	return (1);
-}
-
-/*
- * The pipe_run() function loops over the commands one by
- * one, and creates a new process for every command.
- */
-void	pipe_run(t_pipex *pipex)
-{
-	int	i;
-
-	i = 0;
-	while (i < pipex->cmdc)
-	{
-		process_start(pipex, i);
-		i++;
-	}
 }
 
 /*

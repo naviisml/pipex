@@ -32,11 +32,9 @@
 typedef struct s_pipex	t_pipex;
 
 int		pipe_initialize(t_pipex *pipex, char **argv, int argc, char **env);
-void	pipe_run(t_pipex *pipex);
 void	pipe_close(t_pipex *pipex);
 void	env_parse(t_pipex *pipex);
 char	*env_cmd(t_pipex *pipex, char *cmd);
-int		process_start(t_pipex *pipex, int id);
 int		ft_file_open(char *file, int flags);
 void	ft_file_close(int fd);
 void	ft_putchr_fd(char c, int fd);
