@@ -12,6 +12,22 @@
 
 #include <pipex.h>
 
+/*
+ * The process_save_output() function ...
+ */
+void	process_save_output(int src, int dest)
+{
+	char	*line;
+
+	line = get_next_line(src);
+	while (line != NULL)
+	{
+		ft_putstr_fd(line, dest);
+		free(line);
+		line = get_next_line(src);
+	}
+}
+
 /**
  * The process_exec() function ...
  * 
