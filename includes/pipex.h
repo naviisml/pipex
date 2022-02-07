@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 19:07:44 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/07 11:25:58 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_pipex
 	char	**env;
 	char	**cmds;
 	int		cmdc;
+	int		pipes[2];
 }	t_pipex;
 
 #endif
