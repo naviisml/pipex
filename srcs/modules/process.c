@@ -26,9 +26,12 @@ static void	process_exec(t_pipex *pipex, int id)
 	if (cmd == 0)
 		cmd = pipex->cmds[0];
 	err = execve(cmd, args, pipex->env);
-	ft_putstr_fd(cmd, STDERR_FILENO);
-	ft_putstr_fd(": command doesn't exist.\n", STDERR_FILENO);
-	exit(127);
+	if (err == -1)
+	{
+		ft_putstr_fd(cmd, STDERR_FILENO);
+		ft_putstr_fd(": command doesn't exist.\n", STDERR_FILENO);
+		exit(127);
+	}
 }
 
 /**
