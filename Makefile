@@ -19,7 +19,8 @@ BUILD_FILES		=	$(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
-SOURCE_FILES	=	utilities/utils.c \
+SOURCE_FILES	=	utilities/get_next_line.c \
+					utilities/utils.c \
 					utilities/file.c \
 					modules/env.c \
 					modules/process.c \
