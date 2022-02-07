@@ -7,7 +7,7 @@ COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra -Iincludes/
 
 # Configuration...
-TEST_COMMAND 	= 	./$(NAME) ./resources/input "ls -l" ls ./resources/output
+TEST_CASE 		= 	./resources/input "ls -l" "wc -l"
 
 # Libft...
 LIBFT			=	libft.a
@@ -75,5 +75,7 @@ re: fclean all
 
 # Run a test
 dev: all
-	@echo "Running \t[]..."
-	@$(TEST_COMMAND)
+	@echo "Running \tTest case..."
+	@./$(NAME) ./resources/input "ls -l" "wc -l" ./resources/output
+	@echo "Running \tReal function..."
+	@< ./resources/input ls -l | wc -l > ./resources/output_origin
