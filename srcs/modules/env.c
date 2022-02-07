@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/06 19:16:38 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/07 11:16:52 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,5 @@ char	*env_cmd(t_pipex *pipex, char *cmd)
 			break ;
 		i++;
 	}
-	ft_putchar_fd('\n', 2);
-	ft_putchar_fd('\n', 2);
-	ft_putstr_fd(bin, 2);
-	ft_putchar_fd('\n', 2);
-	ft_putchar_fd('\n', 2);
 	return (bin);
 }
