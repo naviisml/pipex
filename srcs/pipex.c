@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/07 11:19:01 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/07 12:43:03 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	main(int argc, char **args, char **env)
 	t_pipex	pipex;
 	int		res;
 
-	if (BONUS == 0 && argc != 5)
-		return (ft_write_err("Err: Too many arguments"));
-	if (argc < 5)
+	if (argc != 5)
 		return (ft_write_err("Err: Missing arguments"));
 	res = pipe_initialize(&pipex, args, (argc - 1), env);
 	if (!res)
@@ -30,5 +28,5 @@ int	main(int argc, char **args, char **env)
 	env_parse(&pipex);
 	pipe_run(&pipex);
 	pipe_close(&pipex);
-	return (0);
+	return (1);
 }
