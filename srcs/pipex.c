@@ -26,6 +26,7 @@ int	main(int argc, char **args, char **env)
 	if (!res)
 		return (0);
 	env_parse(&pipex);
+	process_run(&pipex);
 	pipe_close(&pipex);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/07 11:25:58 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/07 12:42:47 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		pipe_initialize(t_pipex *pipex, char **argv, int argc, char **env);
 void	pipe_close(t_pipex *pipex);
 void	env_parse(t_pipex *pipex);
 char	*env_cmd(t_pipex *pipex, char *cmd);
+void	process_run(t_pipex *pipex);
 int		ft_file_open(char *file, int flags);
 void	ft_file_close(int fd);
 void	ft_putchr_fd(char c, int fd);
