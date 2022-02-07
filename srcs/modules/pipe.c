@@ -26,16 +26,12 @@ int	pipe_initialize(t_pipex *pipe, char **argv, int argc, char **env)
 	int		i;
 
 	pipe->env = env;
-	pipe->fd_input = ft_file_open(argv[1]);
-	pipe->fd_output = ft_file_open(argv[argc]);
+	pipe->fd_input = ft_file_open(argv[1], O_RDWR);
+	pipe->fd_output = ft_file_open(argv[argc], O_RDWR | O_CREAT | O_TRUNC);
 	if (pipe->fd_input < 0)
-		return (ft_write_err("Err: File doesn't exist."));
+		return (ft_write_err("Err: Input file doesn't exist."));
 	if (pipe->fd_output < 0)
-	{
-		pipe->fd_output = ft_file_create(argv[argc]);
-		if (pipe->fd_output < 0)
-			return (ft_write_err("Err: Could't create output file."));
-	}
+		return (ft_write_err("Err: Output file can't be opened/created."));
 	i = 2;
 	pipe->cmds = malloc((argc - 1) * sizeof(char *));
 	if (!pipe->cmds)
