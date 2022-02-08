@@ -37,9 +37,13 @@ char	*env_cmd(t_pipex *pipex, char *cmd)
 
 	paths = ft_split(pipex->path, ':');
 	i = 0;
+	if (ft_chrncmp(cmd, '/', 1) != 0)
+		cmd = ft_strjoin("/", cmd);
+	if (!cmd)
+		exit(-1);
 	while (paths[i])
 	{
-		bin = ft_strdup(ft_strjoin(paths[i], ft_strjoin("/", cmd)));
+		bin = ft_strjoin(paths[i], cmd);
 		if (access(bin, F_OK) == 0)
 			return (bin);
 		free(bin);
