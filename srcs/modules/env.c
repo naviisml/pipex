@@ -44,6 +44,8 @@ char	*env_cmd(t_pipex *pipex, char *cmd)
 	while (paths[i])
 	{
 		bin = ft_strjoin(paths[i], cmd);
+		if (!bin)
+			exit(-1);
 		if (access(bin, F_OK) == 0)
 			return (bin);
 		free(bin);

@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/07 12:43:40 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/08 16:55:03 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ static void	process_exec(t_pipex *pipex, int id)
 	if (cmd == 0)
 		cmd = pipex->cmds[0];
 	err = execve(cmd, args, pipex->env);
-	ft_putstr_fd(cmd, STDERR_FILENO);
-	ft_putstr_fd(": command doesn't exist.\n", STDERR_FILENO);
-	exit(127);
+	if (err == -1)
+	{
+		ft_putstr_fd(cmd, STDERR_FILENO);
+		ft_putstr_fd(": command doesn't exist.\n", STDERR_FILENO);
+		exit(127);
+	}
 }
 
 /**
  * The process_run() function ...
  */
-void process_run(t_pipex *pipex)
+void	process_run(t_pipex *pipex)
 {
 	int		pid;
 
@@ -59,4 +62,3 @@ void process_run(t_pipex *pipex)
 	}
 	process_exec(pipex, 1);
 }
-
