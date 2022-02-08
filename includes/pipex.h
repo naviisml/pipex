@@ -6,7 +6,7 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:27:03 by nismail       #+#    #+#                 */
-/*   Updated: 2022/02/07 12:42:47 by nismail       ########   odam.nl         */
+/*   Updated: 2022/02/08 16:54:00 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 // System Libraries...
 # include <libft.h>
-# include <get_next_line.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <errno.h>
