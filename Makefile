@@ -19,8 +19,7 @@ BUILD_FILES		=	$(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
-SOURCE_FILES	=	utilities/get_next_line.c \
-					utilities/utils.c \
+SOURCE_FILES	=	utilities/utils.c \
 					utilities/file.c \
 					modules/env.c \
 					modules/process.c \
@@ -64,10 +63,12 @@ all: $(NAME)
 
 # Remove the `object` folder and files...
 clean:
+	@$(MAKE) clean -C $(LIBFT_FOLDER)
 	@rm -rf $(OBJECT_FILES) $(OBJECT_FOLDER)
 
 # Remove the `object` and `build` folder and files...
 fclean: clean
+	@$(MAKE) fclean -C $(LIBFT_FOLDER)
 	@rm -rf $(NAME)
 
 # Clean the program up and re-compile it...
