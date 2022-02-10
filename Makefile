@@ -64,7 +64,7 @@ all: $(NAME)
 # Remove the `object` folder and files...
 clean:
 	@$(MAKE) clean -C $(LIBFT_FOLDER)
-	@rm -rf $(OBJECT_FILES) $(OBJECT_FOLDER)
+	@rm -rf $(OBJECT_FILES) $(OBJECT_FOLDER) $(BUILD_FOLDER)
 
 # Remove the `object` and `build` folder and files...
 fclean: clean
@@ -73,10 +73,3 @@ fclean: clean
 
 # Clean the program up and re-compile it...
 re: fclean all
-
-# Run a test
-dev: all
-	@echo "Running \tTest case..."
-	@./$(NAME) ./resources/input "ls -l" "wc -l" ./resources/output
-	@echo "Running \tReal function..."
-	@< ./resources/input ls -l | wc -l > ./resources/output_origin
